@@ -1,0 +1,33 @@
+class stack:
+    def __init__(self):
+        self.stack = []
+    def add(self,dataval):
+        if(dataval not in self.stack):
+            self.stack.append(dataval)
+            return True
+        else:
+            return False
+    def peek(self):
+        return self.stack[-1]
+    def remove(self):
+        if(len(self.stack)<=0):
+            print("No elements in stack")
+        else:
+            return self.stack.pop()
+    def printstack(self):
+        for i in self.stack:
+            print(i,end=" ")
+newstack = stack()
+newstack.add(1)
+newstack.printstack()
+newstack.add(6)
+print(" ")
+newstack.printstack()
+newstack.add(3)
+print(" ")
+newstack.printstack()
+print(" ")
+print(newstack.peek())
+print(newstack.remove()," is removed")
+print(" ")
+newstack.printstack()
