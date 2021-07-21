@@ -1,0 +1,11 @@
+import collections
+doubleended = collections.deque(["Mon","Tue","Wed"])
+print(doubleended)
+doubleended.append("Thu")
+print(doubleended)
+doubleended.appendleft("Sun")
+print(doubleended)
+doubleended.pop()
+print(doubleended)
+doubleended.popleft()
+print(doubleended)
