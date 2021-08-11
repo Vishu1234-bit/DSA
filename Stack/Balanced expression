@@ -1,0 +1,34 @@
+class Stack:
+    def __init__(self):
+        self.stack = []
+    def isEmpty(self):
+        if(len(self.stack) == 0):
+            return True
+        else:
+            return False
+    def push(self,ele):
+        self.stack.append(ele)
+        print("Pushed ",ele)
+    def pop(self):
+        return self.stack.pop()
+expression_stack = Stack()
+exp = input("Enter a expression: ")
+for i in exp:
+    if i in "({[":
+        expression_stack.push(i)
+    elif i in ")}]" and expression_stack.isEmpty():
+        print("Missing opening symbol")
+        exit()
+    elif i in"}])":
+        symbol = expression_stack.pop()
+        if((i=="}" and symbol!="{") or (i=="]" and symbol!="[") or (i==")" and symbol!="(")):
+            print("Mismatched Symbol")
+            exit()
+if not expression_stack.isEmpty():
+    print("Missing closing symbol")
+else:
+    print("Balanced expression")
+     
+        
+        
+    
