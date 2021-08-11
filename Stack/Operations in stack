@@ -1,0 +1,62 @@
+class Stack:
+    def __init__(self):
+        self.stack = []
+        self.limit = 10
+    def isFull(self):
+        if(len(self.stack) == self.limit):
+            print("Stack full")
+            return True
+        else:
+            print("Not full . The size is ",len(self.stack))
+            return False
+    def isEmpty(self):
+        if(len(self.stack) == 0):
+            print("Stack empty")
+            return True
+        else:
+            print("Not empty . The size is ",len(self.stack))
+            return False
+    def push(self,ele):
+        if(self.isFull()):
+            print("Stack overflow")
+        else:
+            self.stack.append(ele)
+            print("Pushed ",ele)
+            self.display()
+    def pop(self):
+        if(self.isEmpty()):
+            print("Stack underflow")
+        else:
+            return self.stack.pop()
+            print("Popped ",self.peek())
+            self.display()
+    def peek(self):
+        if(self.isEmpty()):
+            print("Stack underflow")
+        else:
+            return self.stack[-1]
+    def display(self):
+        if(self.isEmpty()):
+            print("Stack underflow")
+        else:
+            for ele in self.stack:
+                print(ele,end=" ")
+mystack = Stack()
+print("1.Push\n2.Pop\n3.Peek\n4.Display\n5.isFull\n6.isEmpty")
+while(1):
+    n = int(input())
+    if(n==1):
+        ele = int(input())
+        mystack.push(ele)
+    elif(n==2):
+        print(mystack.pop())
+    elif(n==3):
+        print(mystack.peek())
+    elif(n==4):
+        mystack.display()
+    elif(n==5):
+        mystack.isFull()
+    elif(n==6):
+        mystack.isEmpty()
+    else:
+        print("Invalid Option")
