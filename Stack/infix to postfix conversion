@@ -1,0 +1,38 @@
+class Stack:
+    def __init__(self):
+        self.stack=[]
+    def isEmpty(self):
+        if(len(self.stack)==0):
+            return True
+        else:
+            return False
+    def push(self,val):
+        self.stack.append(val)
+    def pop(self):
+        return self.stack.pop()
+    def peek(self):
+        return self.stack[-1]
+stack = Stack()
+precedence ={}
+precedence["("] = 1 
+precedence["+"] = 2 
+precedence["-"] = 2
+precedence["*"] = 3 
+precedence["/"] = 3 
+precedence["%"] = 3 
+infix = input("Enter a infix expression:")
+for char in infix:
+    if(char>='A' and char<='Z') or (char>='a' and char<='z'):
+        print(char,end="")
+    elif(char=='('):
+        stack.push(char)
+    elif(char == ')'):
+        while(stack.peek()!= '('):
+            print(stack.pop(),end="")
+        stack.pop()
+    else:
+        if(not stack.isEmpty() and precedence[char]<=precedence[stack.peek()]):
+            print(stack.pop(),end="")
+        stack.push(char)
+for i in stack.stack[::-1]:
+    print(i,end="")
