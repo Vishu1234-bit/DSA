@@ -1,0 +1,42 @@
+class circularQueue:
+    def __init__(self):
+        self.circularqueue = []
+        self.limit = 6
+        self.front = None
+        self.rear = None
+    def isFull(self):
+        if(len(self.circularqueue)==self.limit):
+            return True
+        else:
+            return False
+    def isEmpty(self):
+         if(len(self.circularqueue)==0):
+            return True
+         return False
+    def enqueue(self,ele):
+        if(self.isFull()):
+            print("Queue Overflow")
+        else:
+            if(self.front==None and self.rear == None):
+                self.front=self.rear = 0
+            else:
+                self.rear = (self.rear+1)%self.limit
+            self.circularqueue.append(ele)
+    def dequeue(self):
+        if(self.isEmpty()):
+            print("Queue UnderFlow")
+        else:
+            if(self.front==self.rear):
+                self.front=self.rear=None
+            else:
+                self.front = (self.front+1)%self.limit
+    def display(self):
+        if(self.isEmpty()):
+            print("Underflow")
+        else:
+            for i in self.circularqueue:
+                print(i,end=" ")
+cq = circularQueue()
+for i in range(1,14):
+    cq.enqueue(i)
+cq.display()
